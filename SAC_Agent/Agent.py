@@ -12,7 +12,7 @@ import time
 physical_devices = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
-env_name = 'MountainCarContinuous-v0' #'Pendulum-v0' #'LunarLanderContinuous-v2' #'MountainCarContinuous-v0' # 'Pendulum-v0'
+env_name = 'Pendulum-v0' #'Pendulum-v0' #'LunarLanderContinuous-v2' #'MountainCarContinuous-v0' # 'Pendulum-v0'
 env = gym.make(env_name )
 log_dir = 'logs/' + env_name + str(time.time())
 summary_writer = tf.summary.create_file_writer(log_dir)
