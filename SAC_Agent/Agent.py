@@ -51,13 +51,13 @@ class Agent:
         for ep in range(self.total_eps):
             total_score = 0
             done = False
-            state = env.reset()
+            state = self.env.reset()
             current_step = 0
             while not done:
                 current_step += 1
                 self.steps +=1
                 action, log_pi = self.Actor.sample_action(state[np.newaxis, :])
-                action = np.squeeze(action, axis=1)
+                action = np.squeeze(action, axis=0)
                 # interpolate to get action is form for env's space
                 env_action = self.env.action_space.low + (action + 1)/2 * (self.env.action_space.high - self.env.action_space.low)
                 next_state, reward, done, info = self.env.step(env_action)
